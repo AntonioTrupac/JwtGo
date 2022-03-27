@@ -2,10 +2,6 @@
 
 package model
 
-type Node interface {
-	IsNode()
-}
-
 type AuthOps struct {
 	Login    interface{} `json:"login"`
 	Register interface{} `json:"register"`
@@ -17,3 +13,8 @@ type NewUser struct {
 	Password string `json:"password"`
 }
 
+type User struct {
+	ID    int    `json:"id"`
+	Name  string `json:"name"`
+	Email string `json:"email"`
+}

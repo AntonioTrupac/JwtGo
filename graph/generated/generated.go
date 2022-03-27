@@ -6,7 +6,6 @@ import (
 	"bytes"
 	"context"
 	"errors"
-	"fmt"
 	"strconv"
 	"sync"
 	"sync/atomic"
@@ -226,15 +225,6 @@ var sources = []*ast.Source{
 
 scalar Any
 
-schema {
-  query: Query
-  mutation: Mutation
-}
-
-interface Node {
-  id: Int!
-}
-
 type User {
   id: Int!
   name: String!
@@ -251,6 +241,7 @@ type AuthOps {
   login(email: String!, password: String!): Any! @goField(forceResolver: true)
   register(input: NewUser!): Any! @goField(forceResolver: true)
 }
+
 type Query {
   getUser(id: ID!): User! @goField(forceResolver: true)
 }
@@ -1937,15 +1928,6 @@ func (ec *executionContext) unmarshalInputNewUser(ctx context.Context, obj inter
 // endregion **************************** input.gotpl *****************************
 
 // region    ************************** interface.gotpl ***************************
-
-func (ec *executionContext) _Node(ctx context.Context, sel ast.SelectionSet, obj model.Node) graphql.Marshaler {
-	switch obj := (obj).(type) {
-	case nil:
-		return graphql.Null
-	default:
-		panic(fmt.Errorf("unexpected type %T", obj))
-	}
-}
 
 // endregion ************************** interface.gotpl ***************************
 

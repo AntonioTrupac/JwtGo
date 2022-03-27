@@ -24,6 +24,7 @@ func GetDB() *gorm.DB {
 
 func init() {
 	godotenv.Load()
+	connectDatabase()
 }
 
 func connectDatabase() {
@@ -41,6 +42,8 @@ func connectDatabase() {
 	if err != nil {
 		panic("Failed To Connect To Database")
 	}
+
+	fmt.Println("Connected to db", db)
 }
 
 // initConfig Initialize config

@@ -5,15 +5,6 @@ directive @goField(
 
 scalar Any
 
-schema {
-  query: Query
-  mutation: Mutation
-}
-
-interface Node {
-  id: Int!
-}
-
 type User {
   id: Int!
   name: String!
@@ -30,6 +21,7 @@ type AuthOps {
   login(email: String!, password: String!): Any! @goField(forceResolver: true)
   register(input: NewUser!): Any! @goField(forceResolver: true)
 }
+
 type Query {
   getUser(id: ID!): User! @goField(forceResolver: true)
 }
