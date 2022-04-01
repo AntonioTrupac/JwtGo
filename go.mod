@@ -5,6 +5,7 @@ go 1.17
 require (
 	github.com/99designs/gqlgen v0.17.2
 	github.com/golang-jwt/jwt v3.2.2+incompatible
+	github.com/google/uuid v1.3.0
 	github.com/markbates/pkger v0.17.1
 	github.com/vektah/gqlparser/v2 v2.4.1
 	golang.org/x/crypto v0.0.0-20220321153916-2c7772ba3064
@@ -14,7 +15,6 @@ require (
 	github.com/cpuguy83/go-md2man/v2 v2.0.1 // indirect
 	github.com/go-sql-driver/mysql v1.6.0 // indirect
 	github.com/gobuffalo/here v0.6.0 // indirect
-	github.com/google/uuid v1.3.0 // indirect
 	github.com/matryer/moq v0.2.3 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
 	github.com/urfave/cli/v2 v2.3.0 // indirect

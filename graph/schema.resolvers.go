@@ -5,26 +5,33 @@ package graph
 
 import (
 	"context"
-	"fmt"
 
 	"antonio.trupac/graph/generated"
 	"antonio.trupac/graph/model"
+	"antonio.trupac/service"
+	types "antonio.trupac/types"
 )
 
 func (r *authOpsResolver) Login(ctx context.Context, obj *model.AuthOps, email string, password string) (interface{}, error) {
-	panic(fmt.Errorf("not implemented"))
+	return service.UserLogin(ctx, email, password)
 }
 
 func (r *authOpsResolver) Register(ctx context.Context, obj *model.AuthOps, input model.NewUser) (interface{}, error) {
-	panic(fmt.Errorf("not implemented"))
+	return service.UserRegister(ctx, input)
 }
 
 func (r *mutationResolver) Auth(ctx context.Context) (*model.AuthOps, error) {
-	panic(fmt.Errorf("not implemented"))
+	return &model.AuthOps{}, nil
 }
 
-func (r *queryResolver) GetUser(ctx context.Context, id string) (*model.User, error) {
-	panic(fmt.Errorf("not implemented"))
+func (r *queryResolver) GetUser(ctx context.Context, id int) (*model.User, error) {
+	user, err := service.GetUserById(ctx, id)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return types.MapUser(user), nil
 }
 
 // AuthOps returns generated.AuthOpsResolver implementation.

@@ -23,7 +23,7 @@ type AuthOps {
 }
 
 type Query {
-  getUser(id: ID!): User! @goField(forceResolver: true)
+  getUser(id: Int!): User! @goField(forceResolver: true)
 }
 type Mutation {
   auth: AuthOps! @goField(forceResolver: true)
