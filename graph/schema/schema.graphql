@@ -3,6 +3,9 @@ directive @goField(
   name: String
 ) on FIELD_DEFINITION | INPUT_FIELD_DEFINITION
 
+# new directive
+directive @auth on FIELD_DEFINITION
+
 scalar Any
 
 type User {
@@ -24,6 +27,9 @@ type AuthOps {
 
 type Query {
   getUser(id: Int!): User! @goField(forceResolver: true)
+
+  #protected resources
+  protected: String! @goField(forceResolver: true) @auth
 }
 type Mutation {
   auth: AuthOps! @goField(forceResolver: true)

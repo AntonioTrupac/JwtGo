@@ -47,7 +47,7 @@ func GetUserByEmail(ctx context.Context, email string) (*models.User, error) {
 	db := config.GetDB()
 
 	var user models.User
-	if err := db.Model(user).Where("email LIKE ?", user.Email).Take(&user).Error; err != nil {
+	if err := db.Model(user).Where("email LIKE ?", email).Take(&user).Error; err != nil {
 		return nil, err
 	}
 

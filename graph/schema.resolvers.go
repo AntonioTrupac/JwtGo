@@ -9,7 +9,7 @@ import (
 	"antonio.trupac/graph/generated"
 	"antonio.trupac/graph/model"
 	"antonio.trupac/service"
-	types "antonio.trupac/types"
+	"antonio.trupac/types"
 )
 
 func (r *authOpsResolver) Login(ctx context.Context, obj *model.AuthOps, email string, password string) (interface{}, error) {
@@ -32,6 +32,10 @@ func (r *queryResolver) GetUser(ctx context.Context, id int) (*model.User, error
 	}
 
 	return types.MapUser(user), nil
+}
+
+func (r *queryResolver) Protected(ctx context.Context) (string, error) {
+	return "Success", nil
 }
 
 // AuthOps returns generated.AuthOpsResolver implementation.
